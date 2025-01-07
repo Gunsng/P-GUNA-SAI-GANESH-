@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom Scrolling Website</title>
+  <style>
+    /* styles.css */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0078d4;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    main {
+      padding: 2rem 1rem;
+    }
+
+    .section {
+      margin: 2rem 0;
+      padding: 2rem;
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      opacity: 0; /* Initially hidden */
+      transform: translateY(50px); /* Initial offset */
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .section h2 {
+      margin: 0 0 1rem;
+      color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #333;
+      color: #fff;
+    }
+
+    /* Animation Classes */
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0); /* Reset transform */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to the Bloom Scrolling Website</h1>
+  </header>
+  <main>
+    <section class="section fade-in">
+      <h2>Section 1</h2>
+      <p>This is the first section. It fades in as you scroll down.</p>
+    </section>
+    <section class="section slide-in">
+      <h2>Section 2</h2>
+      <p>This section slides in from the left as you scroll.</p>
+    </section>
+    <section class="section fade-in">
+      <h2>Section 3</h2>
+      <p>This is the final section. It fades in just like the first one.</p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Bloom Scrolling Website</p>
+  </footer>
+  <script>
+    // script.js
+
+    // Function to reveal elements on scroll
+    function handleScroll() {
+      const sections = document.querySelectorAll('.section');
+      const windowHeight = window.innerHeight;
+
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < windowHeight - 100) {
+          section.classList.add('visible'); // Add visible class
+        }
+      });
+    }
+
+    // Attach scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Trigger animations for elements already in view on page load
+    window.addEventListener('load', handleScroll);
+  </script>
+</body>
+</html>
